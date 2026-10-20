@@ -13,6 +13,33 @@ button{border:0;border-radius:10px;padding:11px 14px;font:700 13px system-ui;cur
 #csv{background:#e9f4ff;color:#185b9b;border:1px solid #d4e7ff}#print{background:#f0ecff;color:#6042a4;border:1px solid #e1d8ff}#delall{margin-left:auto}
 @media(max-width:560px){header{padding:20px 14px}.brand-icon{flex-basis:44px;height:44px;font-size:23px;border-radius:13px}main{padding:12px 10px 24px}.card{padding:13px;border-radius:14px}.grid{grid-template-columns:1fr;gap:10px}.stats{grid-template-columns:1fr;gap:8px}.stat{padding:12px 14px}.stat b{font-size:19px}.buttons button{flex:1 1 auto}.table-title{align-items:flex-start}.status{font-size:10px;padding:4px 6px}#delall{margin-left:3px}}
 @media print{body{background:white;font-size:11px}header{background:white;color:#111;padding:10px 0;box-shadow:none}.brand-icon,.noprint,button{display:none!important}header p{color:#333}main{padding:0;max-width:none}.card,.stat{box-shadow:none;border:1px solid #ddd;break-inside:avoid}.tablebox{overflow:visible;border:0}table{min-width:0;font-size:9px}th,td{padding:6px 4px;font-size:9px}.stats{grid-template-columns:repeat(3,1fr)}.stat b{font-size:14px}.status{color:#111;background:none}}
+
+/* Ledger-inspired layout: clear like a handwritten meter logbook */
+:root{--paper:#eef4f8;--ink:#20394b;--line:#b8d8e8}
+body{background:linear-gradient(#eef4f8,#f6f8fa);color:#20394b}
+header{background:linear-gradient(120deg,#12314a,#075c83 65%,#087f91);border-bottom:4px solid #7cc7e3}
+.card{border-radius:12px;border-color:#c9dce6;box-shadow:0 3px 10px #17384b0b}
+.section-icon{border-radius:8px;background:#e5f3fa}
+.stat{border-radius:10px;background:#fff}
+.tablebox{border:1px solid #8db9cf;border-radius:5px;background:#fff}
+table{min-width:760px;border-collapse:separate;border-spacing:0;background-color:#fffef8;
+ background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 37px,#d6e8f1 38px,#d6e8f1 39px)}
+thead th{background:#dceef6;color:#183e56;border-bottom:2px solid #6799b3;border-right:1px solid #a9cbdc;padding:12px 10px;font-size:11px;letter-spacing:.25px}
+thead th:nth-child(1){border-left:4px solid #4d9dc2}
+thead th:nth-child(2),thead th:nth-child(3){background:#e8f3fa}
+thead th:nth-child(4),thead th:nth-child(5){background:#e4f4f0}
+tbody td{height:39px;padding:9px 10px;border-bottom:1px solid #cfe2ec;border-right:1px solid #d4e5ec;color:#243e50;font-size:12px;font-variant-numeric:tabular-nums}
+tbody td:first-child{border-left:4px solid #8dc5df;text-align:left;font-weight:650}
+tbody td:nth-child(2),tbody td:nth-child(4){font-weight:650}
+tbody td:nth-child(3){color:#0879a9;font-weight:800}
+tbody td:nth-child(5){color:#087b67;font-weight:800}
+tbody tr:nth-child(even){background-color:#f7fbfd}
+tbody tr:hover{background-color:#eaf7fc}
+.diff{font-weight:800}
+input{border-radius:8px}
+button{border-radius:8px}
+@media(max-width:560px){table{min-width:740px}thead th,tbody td{padding:9px 8px}.tablebox{border-radius:5px}}
+@media print{body{background:#fff}header{border:0}table{background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 30px,#d6e8f1 31px,#d6e8f1 32px)}thead th,tbody td{border-right:1px solid #bbb;border-bottom:1px solid #ccc}}
 </style></head><body><header><div class="head-inner"><div class="brand-icon">▥</div><div><h1>Mj.Ablao Meter Monitoring</h1><p>DAILY CONSUMPTION TRACKER · MERALCO &amp; MANILA WATER</p></div></div></header><main>
 <section class="card noprint"><div class="section-head"><div class="section-icon">↔</div><div><h2>Starting / Previous Reading</h2><p>Optional · Baseline bago ang unang record</p></div></div><div class="grid"><div><label>Meralco previous reading (kWh)</label><input id="sm" type="number" step="any" placeholder="Hal. 7183"></div><div><label>Manila Water previous reading (m³)</label><input id="sw" type="number" step="any" placeholder="Hal. 15409.14"></div></div><p class="hint">Ilagay ang reading bago ang unang araw para makuwenta ang unang DIFF. Auto-save ang settings.</p></section>
 <section class="card noprint"><div class="section-head"><div class="section-icon">＋</div><div><h2 id="title">Magdagdag ng Daily Reading</h2><p>Ilagay ang cumulative meter reading para sa napiling petsa</p></div></div><div class="grid"><div><label>Petsa</label><input id="date" type="date"></div><div><label>Meralco reading (kWh)</label><input id="m" type="number" min="0" step="any" placeholder="Hal. 7498"></div><div><label>Manila Water reading (m³)</label><input id="w" type="number" min="0" step="any" placeholder="Hal. 15421.02"></div><div><label>Automatic DIFF preview</label><input id="preview" readonly placeholder="Automatic"></div></div><div class="buttons"><button id="save">Save Reading</button><button class="secondary" id="clear">Clear Form</button><button class="secondary" id="cancel" hidden>Cancel Edit</button></div><p class="hint">Cumulative meter readings ang ilagay. Kapag may nalaktawang araw, magko-compute mula sa huling na-input na reading. Kapag nagdagdag ng lumang reading, maa-update ang kasunod na DIFF.</p></section>
