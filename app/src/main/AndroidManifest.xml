@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <application android:allowBackup="true" android:label="Mj.Ablao Meter Monitoring" android:theme="@android:style/Theme.Material.Light.NoActionBar">
+    <application android:allowBackup="true" android:icon="@drawable/app_icon" android:roundIcon="@drawable/app_icon" android:label="Mj.Ablao Meter Monitoring" android:theme="@android:style/Theme.Material.Light.NoActionBar">
         <activity android:name=".MainActivity" android:exported="true" android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
         </activity>
